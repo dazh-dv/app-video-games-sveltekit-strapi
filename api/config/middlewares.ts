@@ -1,0 +1,41 @@
+export default [
+  "strapi::errors",
+  {
+    name: "strapi::security",
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          "connect-src": ["'self'", "https:"],
+          "img-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "dl.airtable.com",
+            "market-assets.strapi.io",
+            "analytics.strapi.io",
+            process.env.CF_PUBLIC_ACCESS_URL.replace(/^https?:\/\//, ""),
+          ],
+          "media-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "dl.airtable.com",
+            "market-assets.strapi.io",
+            "analytics.strapi.io",
+            process.env.CF_PUBLIC_ACCESS_URL.replace(/^https?:\/\//, ""),
+          ],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
+  },
+  "strapi::cors",
+  "strapi::poweredBy",
+  "strapi::logger",
+  "strapi::query",
+  "strapi::body",
+  "strapi::session",
+  "strapi::favicon",
+  "strapi::public",
+];
